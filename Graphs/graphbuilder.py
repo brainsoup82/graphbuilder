@@ -313,7 +313,6 @@ class Graph:
             all_nodes[lowest_node][1] = True
             all_nodes[lowest_node][2] = True
 
-        print(all_nodes)
         message = f'\nTotal Distance {all_nodes[end_node][0]}'
         while all_nodes[start_node][2]:
             for node in all_nodes:
@@ -328,35 +327,8 @@ class Graph:
                             all_nodes[path[0]][1]=True
                             all_nodes[node][1] = False
                             all_nodes[path[0]][2] = False
-                            print('breaking')
                             break
         return message
 
 if __name__ == '__main__':
-    my_graph = Graph()
-    my_graph.add_path('A','B',3)
-    my_graph.add_path('B','C',1)
-    my_graph.add_paths([['A','C', 2],['D','C',9],['D','A',5.2],['A','B',4]])
-
-    print(my_graph.node_degree('A'))
-    print(my_graph)
-    print(my_graph.is_eulerian())
-    print(my_graph.odd_vertices())
-    print(my_graph.eulerian_path()[0])
-    print(my_graph)
-
-    my_graph = Graph()
-    my_graph.add_paths([['A','C', 2],['D','C',9],['D','A',5.2],['A','B',4],
-                        ['C','E',3],['F','G',1],['G','A',19]])
-    print(my_graph)
-    print('nodes connected to C and D')
-    print(my_graph.connected_nodes(['D','C']))
-    print('and is the graph fully connected')
-    print(my_graph.fully_connected())
-    print(my_graph.dijkstra('B', 'E'))
-    my_graph = Graph()
-    my_graph.add_paths([['A','B',4],['A','D',7],['A','C',3],['D','B',1],
-                        ['C','D',3],['B','F',4],['C','E',5],['D','E',2],
-                        ['D','F',2],['D','G',7],['E','G',2],['F','G',4]])
-    print(my_graph)
-    print(my_graph.dijkstra('A','G'))
+    pass
