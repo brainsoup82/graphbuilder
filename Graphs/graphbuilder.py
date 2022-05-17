@@ -286,7 +286,7 @@ class Graph:
 
         Parameters
         ----------
-        start_node : starting node for path
+        start_node : the starting node for path
         end_node : ending node for path
 
         Returns
