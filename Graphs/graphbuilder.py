@@ -303,17 +303,17 @@ class Graph:
 
         # Keep going until end_node is finalised
         while all_nodes[end_node][2] is False:
-            for node in all_nodes:
-                # look at the current node
-                if all_nodes[node][1] is True:
-                    # look at all paths from this node
-                    for path in self.paths_at_node(node):
-                        # see if new distance is less than current distance
-                        # if it is then update with new value
-                        if all_nodes[node][0] + path[1] < all_nodes[path[0]][0]:
-                            all_nodes[path[0]][0] = all_nodes[node][0] + path[1]
-                    # current node no longer current
-                    all_nodes[node][1] = False
+            # look at the current node
+            for node in [node for node in all_nodes if all_nodes[node][1]]:
+                # look at all paths from this node
+                # and see if new distance is less than current distance
+                # if it is then update with new value
+                for path in [path for path in self.paths_at_node(node)
+                             if all_nodes[node][0] + path[1] < all_nodes[path[0]][0]]:
+                    if all_nodes[node][0] + path[1] < all_nodes[path[0]][0]:
+                        all_nodes[path[0]][0] = all_nodes[node][0] + path[1]
+                # current node no longer current
+                all_nodes[node][1] = False
 
             lowest_distance = float('inf')
             lowest_node = ''
